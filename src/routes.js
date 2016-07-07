@@ -13,7 +13,7 @@ import ServicesPage from "./components/Services";
 import error404 from "./components/404";
 
 export default ( store ) => {
-	onEnter()
+	function onEnter()
 	{
 		console.log(store.getState())
 	}
