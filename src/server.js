@@ -6,7 +6,7 @@ import { RouterContext, match, createMemoryHistory } from 'react-router';
 
 //
 import config from '../config'
-import routes from './routes';
+import createRoutes from './routes';
 import configureStore from './store/configureStore';
 import { fetchComponentDataBeforeRender } from './api/fetchComponentDataBeforeRender';
 
@@ -37,6 +37,9 @@ const renderFullPage = (html, initialState) => {
 
 app.use( (req, res) => {
 
+  const store = configureStore(createMemoryHistory);
+  const routes = createRoutes(store);
+
   match({ routes, location:req.url }, (err, redirectLocation, renderProps) => {
 
     if(err) {
@@ -52,7 +55,7 @@ app.use( (req, res) => {
       return res.status(404).end('Not found');
     }
 
-    const store = configureStore(createMemoryHistory);
+    
 
     const InitialView = (
       <Provider store={store}>

@@ -11,7 +11,7 @@ class About extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchReposIfNeeded();
+
   }
 
   render () {

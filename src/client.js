@@ -6,7 +6,7 @@ import { Router, match, browserHistory } from 'react-router';
 
 //
 import "../styles/index.css";
-import routes from './routes';
+import createRoutes from './routes';
 import configureStore from './store/configureStore';
 import { fetchComponentDataBeforeRender } from './api/fetchComponentDataBeforeRender';
 
@@ -14,6 +14,7 @@ const initialState = window.__INITIAL_STATE__;
 const store = configureStore(browserHistory, initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 const rootElement = document.getElementById('root');
+const routes = createRoutes(store);
 
 /**
  * Callback function handling frontend route changes.
@@ -39,7 +40,7 @@ match({ history, routes }, (error, redirectLocation, renderProps) => {
 	render(
 		<Provider store={store}>
 			<Router {...renderProps} onUpdate={onUpdate}>
-				
+				{ routes }
 			</Router>
 		</Provider>,
 	  document.getElementById('root')
