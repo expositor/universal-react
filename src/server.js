@@ -1,27 +1,28 @@
-import express from 'express';
-
-
-
 import React from 'react';
-import { renderToString } from 'react-dom/server'
-import { RouterContext, match } from 'react-router';
+import express from 'express';
 import { Provider } from 'react-redux';
-//import createLocation from 'history/lib/createLocation';
-import { fetchComponentDataBeforeRender } from '../common/api/fetchComponentDataBeforeRender';
+import { renderToString } from 'react-dom/server'
+import { RouterContext, match, createMemoryHistory } from 'react-router';
 
-import configureStore from '../common/store/configureStore';
-import routes from '../common/routes';
-import config from '../../config'
+//
+import config from '../config'
+import routes from './routes';
+import configureStore from './store/configureStore';
+import { fetchComponentDataBeforeRender } from './api/fetchComponentDataBeforeRender';
+
 
 const app = express();
+
 const renderFullPage = (html, initialState) => {
   return `
     <!doctype html>
     <html>
       <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
         <title>Full Stack Web Developer based in London</title>
-
       </head>
       <body>
         <div id="root">${html}</div>
@@ -34,17 +35,7 @@ const renderFullPage = (html, initialState) => {
   `;
 }
 
-/* if(process.env.NODE_ENV !== 'production'){
-  const compiler = webpack(webpackConfig);
-  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
-  app.use(webpackHotMiddleware(compiler));
-}else{
-  app.use('/static', express.static(__dirname + '/../../dist'));
-} */
-
 app.use( (req, res) => {
-
-  //const location = createLocation(req.url);
 
   match({ routes, location:req.url }, (err, redirectLocation, renderProps) => {
 
@@ -53,10 +44,15 @@ app.use( (req, res) => {
       return res.status(500).end('Internal server error');
     }
 
-    if(!renderProps)
-      return res.status(404).end('Not found');
+    if (redirectLocation){
+      return res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+    }
 
-    const store = configureStore();
+    if(!renderProps){
+      return res.status(404).end('Not found');
+    }
+
+    const store = configureStore(createMemoryHistory);
 
     const InitialView = (
       <Provider store={store}>

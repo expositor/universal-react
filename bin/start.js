@@ -1,5 +1,5 @@
 import http from 'http';
-import app from '../src/server/server';
+import app from '../src/server';
 import config from '../config';
 
 const port = normalizePort( config.port || process.env.PORT );
