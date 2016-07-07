@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class Header extends Component {
 
@@ -7,7 +8,7 @@ class Header extends Component {
     <div className="masthead">
 			<div className="container">
 			  <h3 className="masthead-title">
-			    <a href="/" title="Home">Callum Rimmer</a>
+			    <Link to="/" title="Home">Callum Rimmer</Link>
 			    <small>Full Stack Web Developer based in London</small>
 			  </h3>
 			</div>
