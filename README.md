@@ -1,4 +1,4 @@
-# universal-react
+# Universal React
 
 [![Dependency Status][dep-status-img]][dep-status-link]
 [![devDependency Status][dev-dep-status-img]][dev-dep-status-link]
