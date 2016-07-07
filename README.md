@@ -8,9 +8,7 @@
 [dev-dep-status-img]: https://david-dm.org/expositor/universal-react/dev-status.svg
 [dev-dep-status-link]: https://david-dm.org/expositor/universal-react#info=devDependencies
 
-This is a refactoring and up-to-date version of the portfolio boilerplate made by [caljrimmer/portfolio-redux-app](https://github.com/caljrimmer/portfolio-redux-app). 
-
-It's also inspired by [choonkending/react-webpack-node](https://github.com/choonkending/react-webpack-node) and [erikras/react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example).
+This is a refactoring and up-to-date version of the portfolio boilerplate made by [caljrimmer/portfolio-redux-app](https://github.com/caljrimmer/portfolio-redux-app). It's also inspired by [choonkending/react-webpack-node](https://github.com/choonkending/react-webpack-node) and [erikras/react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example).
 
 Features include:
 
