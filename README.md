@@ -21,10 +21,31 @@ Features include:
 
 #### TODO:
 
-Add support for production mode.
+~~Add support for production mode.~~
 
 ### Geting Started
 ```
 npm install
+```
+
+Go to your config folder:
+```
+module.exports = Object.assign({
+
+	host: 'localhost', <--- localhost || http://example.com
+	port: 3000, <--- default port
+
+	client: 'http://localhost', <--- port for dev client bundle
+	clientPort: 1337, <--- the port for hot reloading
+
+})
+```
+To start development mode:
+```
 npm start
+```
+
+To start production mode:
+```
+npm run production
 ```
