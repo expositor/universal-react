@@ -1,5 +1,6 @@
 import React from 'react';
 import express from 'express';
+import compression from 'compression';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server'
 import { RouterContext, match, createMemoryHistory } from 'react-router';
@@ -10,8 +11,19 @@ import createRoutes from './routes';
 import configureStore from './store/configureStore';
 import { fetchComponentDataBeforeRender } from './api/fetchComponentDataBeforeRender';
 
-
+//set up express
 const app = express();
+
+//apply compression for gzip, you can disable this for the nginx option
+app.use(compression());
+
+//set public path
+app.use('/static', express.static('static'));
+
+//change path to static bundle based on environment
+let appPath = process.env.NODE_ENV === "development" ? 
+    appPath = config.client+':'+config.clientPort+'/static' : 
+    appPath = '/static/dist';
 
 const renderFullPage = (html, initialState) => {
   return `
@@ -22,6 +34,7 @@ const renderFullPage = (html, initialState) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
+        <link rel="icon" href="/static/favicon.ico">
         <title>Full Stack Web Developer based in London</title>
       </head>
       <body>
@@ -29,7 +42,7 @@ const renderFullPage = (html, initialState) => {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}; 
         </script>
-        <script src="${config.client}:${config.clientPort}/static/bundle.js"></script>
+        <script src="${appPath}/bundle.js"></script>
       </body>
     </html>
   `;
@@ -54,8 +67,6 @@ app.use( (req, res) => {
     if(!renderProps){
       return res.status(404).end('Not found');
     }
-
-    
 
     const InitialView = (
       <Provider store={store}>
