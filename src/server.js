@@ -21,7 +21,7 @@ app.use(compression());
 app.use('/static', express.static('static'));
 
 //change path to static bundle based on environment
-let appPath = process.env.NODE_ENV === "development" ? 
+let appPath = process.env.NODE_ENV !== "production" ? 
     appPath = config.client+':'+config.clientPort+'/static' : 
     appPath = '/static/dist';
 

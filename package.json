@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently --kill-others \"npm run start-dev\" \"npm run hot\"",
-    "start-dev": "set NODE_ENV=development&& nodemon bin/start-dev.js --exec babel-node --progress --colors --profile",
-    "hot": "set NODE_ENV=development&& babel-node bin/hot.js --progress --colors",
+    "start-dev": "cross-env NODE_ENV=development nodemon bin/start-dev.js --exec babel-node --progress --colors --profile",
+    "hot": "cross-env NODE_ENV=development babel-node bin/hot.js --progress --colors",
     "production": "concurrently \"npm run build\" \"npm run start-prod\"",
-    "start-prod": "set NODE_ENV=production&& babel-node bin/start-prod.js",
-    "build": "set NODE_ENV=production&& webpack -p --config webpack.prod.js",
+    "start-prod": "cross-env NODE_ENV=production babel-node bin/start-prod.js",
+    "build": "cross-env NODE_ENV=production webpack -p --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
