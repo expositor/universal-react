@@ -52,6 +52,10 @@ module.exports = {
       test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
       loader: "url?limit=10000&mimetype=image/svg+xml" 
     },
+    {
+      test: /\.(mp4|webm)$/,
+      loader: "url?limit=10000"
+    },    
 		{ 
       test: /\.json$/, 
       loader: "json-loader"
