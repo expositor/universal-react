@@ -28,10 +28,10 @@
     "classnames": "^2.2.5",
     "compression": "^1.6.2",
     "express": "^4.14.0",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
-    "react-router": "^2.6.0",
+    "react-router": "^2.6.1",
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0"
