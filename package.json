@@ -23,16 +23,16 @@
   },
   "homepage": "https://github.com/expositor/universal-react#readme",
   "dependencies": {
-    "axios": "^0.13.1",
+    "axios": "^0.14.0",
     "babel-runtime": "^6.11.6",
     "classnames": "^2.2.5",
     "compression": "^1.6.2",
     "express": "^4.14.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
-    "react-router": "^2.8.0",
-    "react-router-redux": "^4.0.5",
+    "react-router": "^2.8.1",
+    "react-router-redux": "^4.0.6",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0"
   },
@@ -54,6 +54,6 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1"
+    "webpack-dev-server": "^1.16.1"
   }
 }
