@@ -19,14 +19,15 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    //new webpack.NoErrorsPlugin()
+	new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
     loaders: [
 		{ 
       test: /\.jsx?$/, 
       exclude: /(node_modules|bower_components)/, 
-      loaders: ['react-hot', 'babel?presets[]=es2015,presets[]=react,presets[]=stage-0,plugins[]=transform-runtime']
+      loaders: ['react-hot-loader', 'babel-loader?presets[]=es2015,presets[]=react,presets[]=stage-0,plugins[]=transform-runtime']
     },
 		{ 
       test: /\.css$/, 
@@ -34,27 +35,27 @@ module.exports = {
     },
 		{ 
       test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
-      loader: "file" 
+      loader: "file-loader" 
     },
 		{ 
       test: /\.(woff|woff2)$/, 
-      loader:"url?prefix=font/&limit=5000" 
+      loader:"url-loader?prefix=font/&limit=5000" 
     },
 		{ 
       test: /\.(png|jpg|jpeg|gif|ico)$/, 
-      loader: 'file?name=images/[name].[hash].[ext]' 
+      loader: 'file-loader?name=images/[name].[hash].[ext]' 
     },
 		{ 
       test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
-      loader: "url?limit=10000&mimetype=application/octet-stream" 
+      loader: "url-loader?limit=10000&mimetype=application/octet-stream" 
     },
 		{ 
       test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
-      loader: "url?limit=10000&mimetype=image/svg+xml" 
+      loader: "url-loader?limit=10000&mimetype=image/svg+xml" 
     },
     {
       test: /\.(mp4|webm)$/,
-      loader: "url?limit=10000"
+      loader: "url-loader?limit=10000"
     },    
 		{ 
       test: /\.json$/, 

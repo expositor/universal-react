@@ -15,10 +15,18 @@ import error404 from "./components/404";
 export default ( store ) => {
 	function onEnter()
 	{
-		console.log(store.getState())
+		//console.log(store.getState())
 	}
+
+	function scrollTop(prevState, nextState)
+	{
+      if (nextState.location.action !== "POP") {
+        window.scrollTo(0, 0);
+      }
+	}
+
     return (
-	  <Route  path="/" component={App}>
+	  <Route onChange={scrollTop} path="/" component={App}>
 	      <IndexRoute component={HomePage} />
 	      <Route path="portfolio" onEnter={onEnter} component={PortfolioPage} />
 	      <Route path="services" component={ServicesPage} />
