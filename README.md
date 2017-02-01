@@ -1,5 +1,7 @@
 # Universal React
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/expositor/universal-react.svg)](https://greenkeeper.io/)
+
 [![Dependency Status][dep-status-img]][dep-status-link]
 [![devDependency Status][dev-dep-status-img]][dev-dep-status-link]
 
